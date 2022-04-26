@@ -8,15 +8,17 @@ CREATE TABLE department (
 );
 
 CREATE TABLE role (
-    id INT NOT NULL,
+    id INT NOT NULL PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
     salary DECIMAL NOT NULL,
-    department_id INT NOT NULL FOREIGN KEY REFERENCES department(id)
+    department_id INT NOT NULL,
+    CONSTRAINT fk_department FOREIGN KEY (department_id) REFERENCES department(id)
 );
 
 CREATE TABLE indent (
     id INT NOT NULL,
     first_name VARCHAR(30),
     last_name VARCHAR(30),
-    role_id INT NOT NULL FOREIGN KEY REFERENCES role(id)
+    role_id INT NOT NULL,
+    CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES role(id)
 )

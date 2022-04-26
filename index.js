@@ -1,5 +1,7 @@
-const database = require('./db');
+
 const inquirer= require('inquirer');
+require('console.table');
+const connection = require('./db/connection')
 
 function mainMenu() {
     inquirer.prompt([
@@ -44,10 +46,10 @@ function mainMenu() {
 
             },
     ]}
-    ]).then(select => {
-        let select = select.choice;
+    ]).then(res => {
+        let choice = res.choice;
 
-        switch (select) {
+        switch (choice) {
             case 'view_dep':
                 viewDepartment();
                 break;
@@ -73,3 +75,16 @@ function mainMenu() {
     })
 };
 
+function viewDepartment() {
+    console.log('working');
+    // connection.query('SELECT department.id, department.name FROM department', function (err, results, ) {
+    //     console.log(results)
+    // })
+    // .then(mainMenu);
+};
+
+function viewRole() {
+    console.log('working')
+}
+
+mainMenu();
